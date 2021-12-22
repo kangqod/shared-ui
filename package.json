@@ -1,6 +1,6 @@
 {
   "name": "chad-shared-ui2",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "private": false,
   "repository": {
     "type": "git",
@@ -14,7 +14,17 @@
   "scripts": {
     "dev": "rm -rf dist && vite serve example",
     "build": "rm -rf dist && vite build && tsc --project tsconfig.build.json --declaration --outDir dist --emitDeclarationOnly",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "lint-staged",
+    "lint:fix": "eslint ./src --ext .js,.ts,.tsx --fix",
+    "prettier": "prettier --write --ignore-path .gitignore \"./src/**/*.{js,ts,tsx,json}\"",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,tsx,json}": [
+      "prettier --write --ignore-path .gitignore \"./src/**/*.{js,ts,tsx,json}\"",
+      "eslint ./src --ext .js,.ts,.tsx --fix"
+    ]
   },
   "peerDependencies": {
     "antd": "^4.17.4",
@@ -32,7 +42,18 @@
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@types/styled-components": "^5.1.18",
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
     "@vitejs/plugin-react": "^1.0.7",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
     "typescript": "^4.4.4",
     "vite": "^2.7.2"
   }

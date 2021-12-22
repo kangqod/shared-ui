@@ -1,6 +1,6 @@
 {
   "name": "chad-shared-ui2",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": false,
   "repository": {
     "type": "git",
@@ -9,8 +9,8 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/chad-shared-ui.cjs.js",
-  "module": "./dist/chad-shared-ui.es.js",
+  "main": "./dist/chad-shared-ui2.cjs.js",
+  "module": "./dist/chad-shared-ui2.es.js",
   "scripts": {
     "dev": "rm -rf dist && vite serve example",
     "build": "rm -rf dist && vite build && tsc --project tsconfig.build.json --declaration --outDir dist --emitDeclarationOnly",

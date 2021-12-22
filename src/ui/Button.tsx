@@ -1,7 +1,8 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import AntdButton, { ButtonProps } from 'antd/lib/button';
-import { appendBaseClassName } from '../utils';
+import React from 'react'
+import styled, { css } from 'styled-components'
+import AntdButton, { ButtonProps } from 'antd/lib/button'
+import { appendBaseClassName } from '../utils'
+import * as S from '../styles/button'
 
 const defaultStyle = css`
   width: 140px;
@@ -11,23 +12,22 @@ const defaultStyle = css`
   line-height: 19px;
   border: none;
   cursor: pointer;
-  color: ${({ theme }) => (theme.ui ? theme.ui.button.value : '#d5e0e9')};
-  border-radius: ${({ theme }) => (theme.ui ? theme.ui.button.value : '4px')};
+  color: ${(props) => S.defaultColor(props) ?? '#d5e0e9'};
+  border-radius: ${(props) => S.defaultBorderRadius(props) ?? '4px'};
   &.wh-auto {
     width: auto;
     height: auto;
   }
-`;
+`
 
 const disabled = css`
   &:disabled {
-    color: ${({ theme }) =>
-      theme.ui ? theme.ui.button.value : '#d5e0e9'} !important;
+    color: ${(props) => S.disabledColor(props) ?? '#d5e0e9 !important'};
     border-color: transparent !important;
     background: transparent !important;
     opacity: 0.2;
   }
-`;
+`
 
 const StyledButton = styled(AntdButton)`
   &.sample-button {
@@ -35,73 +35,65 @@ const StyledButton = styled(AntdButton)`
     ${disabled}
   }
   &.type1 {
-    border: ${({ theme }) =>
-      theme.ui ? theme.ui.button.value : '1.5px solid transparent'};
-    background-color: ${({ theme }) =>
-      theme.ui ? theme.ui.button.value : '#20bdbe'};
+    border: ${(props) => S.type1.border(props) ?? '1.5px solid transparent'};
+    background-color: ${(props) => S.type1.bgColor(props) ?? '#20bdbe'};
     > span {
-      color: ${({ theme }) => (theme.ui ? theme.ui.button.value : '#000825')};
+      color: ${(props) => S.type1.color(props) ?? '#000825'};
     }
     &:hover {
-      border: ${({ theme }) =>
-        theme.ui ? theme.ui.button.value : '1.5px solid #2cdbdd'};
-      box-shadow: ${({ theme }) =>
-        theme.ui
-          ? theme.ui.button.type1.hover.boxShadow
-          : '0px 0px 6px rgba(32, 189, 190, 0.5)'};
-      background-color: ${({ theme }) =>
-        theme.ui ? theme.ui.button.value : '#2cdbdd'};
+      border: ${(props) =>
+        S.type1.hover.border(props) ?? '1.5px solid #2cdbdd'};
+      box-shadow: ${(props) =>
+        S.type1.hover.boxShadow(props) ??
+        '0px 0px 6px rgba(32, 189, 190, 0.5)'};
+      background-color: ${(props) => S.type1.hover.bgColor(props) ?? '#2cdbdd'};
     }
     &:active,
     &:focus {
-      border: ${({ theme }) =>
-        theme.ui ? theme.ui.button.value : '1.5px solid transparent'};
-      background-color: ${({ theme }) =>
-        theme.ui ? theme.ui.button.value : '#039494'};
+      border: ${(props) =>
+        S.type1.active.border(props) ?? '1.5px solid transparent'};
+      background-color: ${(props) =>
+        S.type1.active.bgColor(props) ?? '#039494'};
+      }
     }
   }
   &.type2 {
-    border: ${({ theme }) =>
-      theme.ui ? theme.ui.button.value : '1.5px solid #008c8e'};
-    background-color: ${({ theme }) =>
-      theme.ui ? theme.ui.button.value : '#252D37'};
+    border: ${(props) => S.type2.border(props) ?? '1.5px solid #008c8e'};
+    background-color: ${(props) => S.type2.bgColor(props) ?? '#252D37'};
     > span {
-      color: ${({ theme }) => (theme.ui ? theme.ui.button.value : '#20bdbe')};
+      color: ${(props) => S.type2.color(props) ?? '#20bdbe'};
     }
     &:hover {
-      border: ${({ theme }) =>
-        theme.ui ? theme.ui.button.value : '1.5px solid #2cdbdd'};
-      box-shadow: ${({ theme }) =>
-        theme.ui
-          ? theme.ui.button.value
-          : '0px 0px 6px rgba(32, 189, 190, 0.5)'};
-      background-color: ${({ theme }) =>
-        theme.ui ? theme.ui.button.value : '#2A3440'};
+      border: ${(props) =>
+        S.type2.hover.border(props) ?? '1.5px solid #2cdbdd'};
+      box-shadow: ${(props) =>
+        S.type2.hover.boxShadow(props) ??
+        '0px 0px 6px rgba(32, 189, 190, 0.5)'};
+      background-color: ${(props) => S.type2.hover.bgColor(props) ?? '#2A3440'};
       > span {
-        color: ${({ theme }) =>
-          theme.ui ? theme.ui.button.type2.color : '#2CDBDD'};
+        color: ${(props) => S.type2.hover.color(props) ?? '#2CDBDD'};
       }
     }
     &:active,
     &:focus {
-      border: ${({ theme }) =>
-        theme.ui ? theme.ui.button.value : '1.5px solid #039494'};
-      background-color: ${({ theme }) =>
-        theme.ui ? theme.ui.button.value : '#252D37'};
+      border: ${(props) =>
+        S.type2.active.border(props) ?? '1.5px solid #039494'};
+      background-color: ${(props) =>
+        S.type2.active.bgColor(props) ?? '#252D37'};
       > span {
-        color: ${({ theme }) => (theme.ui ? theme.ui.button.value : '#20BDBE')};
+        color: ${(props) => S.type2.active.color(props) ?? '#20BDBE'};
       }
     }
   }
-`;
+`
 
 function Button({ className, children, ...rest }: ButtonProps) {
-  const names = appendBaseClassName('sample-button', className);
+  const names = appendBaseClassName('sample-button', className)
   return (
     <StyledButton {...rest} className={names}>
       {children}
     </StyledButton>
-  );
+  )
 }
 
-export default Button;
+export default Button

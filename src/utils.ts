@@ -2,10 +2,10 @@ export function appendBaseClassName(
   defaultName: string,
   addName?: string
 ): string {
-  let className = [defaultName];
+  let className = [defaultName]
   if (addName) {
-    const temp = addName.split(' ');
-    className = [...className, ...temp];
+    const temp = addName.split(' ')
+    className = [...className, ...temp]
   }
-  return className.join(' ');
+  return className.join(' ')
 }

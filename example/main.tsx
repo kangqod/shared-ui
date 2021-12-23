@@ -1,6 +1,6 @@
 import * as React from 'react'
 import ReactDOM from 'react-dom'
-import { Button } from '../src/index'
+import { Button } from '../src'
 
 const Example = () => {
   return (

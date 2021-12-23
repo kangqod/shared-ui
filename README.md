@@ -42,9 +42,11 @@ yarn or yarn install
 | |-- ui              # UI Components (from antd)
 ```
 
+<br>
+
 ## 📦  How to use the code
 ```bash
-import { Button } from 'chad-shared-ui2'
+import { Button } from 'kangqod-shared-ui'
 
 ...
 return (
@@ -54,6 +56,8 @@ return (
 )
 ...
 ```
+
+<br>
 
 ## 👉 Development
 
